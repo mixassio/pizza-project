@@ -33,7 +33,7 @@ class PizzaOrderForm(forms.ModelForm):
         errors = []
         for item in excluded:
             if item in data['extra']:
-                errors.append(unicode(item))
+                errors.append(str(item))
 
         if errors:
             raise ValidationError(
@@ -47,7 +47,7 @@ class PizzaOrderForm(forms.ModelForm):
         if delivery is None:
             raise ValueError('Delivery was not set')
 
-        inst = super(PizzaOrderForm, self).save(commit=False)
+        inst = super().save(commit=False)
         inst.delivery = delivery
         if commit:
             inst.save()

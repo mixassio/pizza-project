@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # my apps:
     'pizza_app',
+    'pizza_auth_app',
 ]
 
 INTERNAL_IPS = [
@@ -132,3 +133,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Authorization
+# https://docs.djangoproject.com/es/1.9/topics/auth/
+
+AUTH_USER_MODEL = 'pizza_auth_app.CustomUser'
+LOGIN_URL = '/users/login'
+LOGIN_REDIRECT_URL = '/pizza/create'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]

@@ -19,12 +19,14 @@ class PizzaIngredient(models.Model):
     def __str__(self):
         return str(self.name)
 
+# o = PizzaIngredient(name='onion')
+# o.menu_items.all().count()
 
 class PizzaMenuItem(models.Model):
     name = models.CharField(max_length=50)
     ingredients = models.ManyToManyField(
         'PizzaIngredient',
-        related_name='ingredients'
+        related_name='menu_items'
     )
 
     def __str__(self):
